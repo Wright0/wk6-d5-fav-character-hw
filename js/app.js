@@ -7,10 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
   //Listen for delete button being clicked + call deleteList
   const deleteButton = document.querySelector('.delete-button');
   deleteButton.addEventListener('click', deleteList);
-
 });
 
-//DONE - Function to create a character list item
+//Function to create a character list item
 const createCharacterListItem = function(form){
   const characterListItem = document.createElement('li');
   characterListItem.classList.add('character-list-item');
@@ -31,20 +30,19 @@ const createCharacterListItem = function(form){
   return characterListItem;
 };
 
-
-//DONE - function to delete list
+//function to delete list
 const deleteList = function(){
   const characterList = document.querySelector('.character-list');
   characterList.innerHTML = '';
   //Why do you use innerHTML? Why should you not use textContent?
 
   document.querySelector('.delete-button').style.visibility = 'hidden';
-
 };
 
-//DONE - Function to handle form submission (functions used: createCharacterListItem)
+//Function to handle form submission
 const handleFormSubmission = function(event){
   event.preventDefault();
+
   const characterList = document.querySelector('.character-list');
   characterList.appendChild(createCharacterListItem(event.target));
 
