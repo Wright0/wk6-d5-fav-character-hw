@@ -1,0 +1,31 @@
+body {
+  display: flex;
+  flex-direction: column;;
+  align-items: center;
+  background-color: #FDFFFC;
+  margin: 20px;
+}
+
+p, h1, h2 {
+  color: #235789;
+}
+
+ul {
+  list-style-type:none;
+}
+
+form {
+  align-items: center;
+  border-style: solid;
+  border-color: #ED1C24;
+  border-width: 3px;
+  max-width: 300px;
+}
+
+.form-wrapper {
+  margin: 10px;
+}
+
+.form-item{
+  margin: 15px;
+}
