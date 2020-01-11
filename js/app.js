@@ -1,16 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-//Listen for form being submitted + call handleFormSubmission
-const form = document.querySelector('#fav-character-form');
-form.addEventListener('submit', handleFormSubmission);
+  //Listen for form being submitted + call handleFormSubmission
+  const form = document.querySelector('#fav-character-form');
+  form.addEventListener('submit', handleFormSubmission);
 
-//Listen for delete button being clicked + call deleteList
-const deleteButton = document.querySelector('WHERETHEDELETEBUTTONIS');
-deleteButton.addEventListener('click', deleteList);
+  //Listen for delete button being clicked + call deleteList
+  const deleteButton = document.querySelector('.delete-button');
+  deleteButton.addEventListener('click', deleteList);
 
 });
 
-//Function to create a character list item
+//DONE - Function to select the character list (seems a silly thing to pull, but I also use it 4 times.)
+const pointToCharacterList = function(){
+  characterList = document.querySelector('.character-list');
+  return characterList;
+}
+
+//DONE - Function to create a character list item
 const createCharacterListItem = function(form){
   const characterListItem = document.createElement('li');
   characterListItem.classList.add('character-list-item');
@@ -31,29 +37,24 @@ const createCharacterListItem = function(form){
   return characterListItem;
 };
 
-//Function that checks length of items in list (This will be used to decide if a delete button should be added or not. If the node length is 0, add one. If it's 1, don't. This *should* ensure that only 1 delete button is added.)
-const listLengthCheck = function(){
 
-};
-
-//function that adds a delete button (calling list length check)
-const addDeleteButton = function(){
-
-};
-
-//function to delete list
+//DONE - function to delete list
 const deleteList = function(){
-  const characterList = document.querySelector('.character-list')
+  const characterList = pointToCharacterList();
   characterList.innerHTML = '';
   //Why do you use innerHTML? Why can you not textContent?
+
+  document.querySelector('.delete-button').style.visibility = 'hidden';
+
 };
 
-//Function to handle form submission (functions used: createCharacterListItem createDeleteButton)
+//DONE - Function to handle form submission (functions used: createCharacterListItem)
 const handleFormSubmission = function(event){
   event.preventDefault();
-
-  const characterList = document.querySelector('.character-list');
+  const characterList = pointToCharacterList();
   characterList.appendChild(createCharacterListItem(event.target));
 
-  // event.target.reset();
+  document.querySelector('.delete-button').style.visibility = 'visible';
+
+  event.target.reset();
 };

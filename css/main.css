@@ -29,3 +29,7 @@ form {
 .form-item{
   margin: 15px;
 }
+
+.delete-button{
+  visibility: hidden;
+}
