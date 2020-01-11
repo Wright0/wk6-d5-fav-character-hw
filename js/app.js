@@ -10,12 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-//DONE - Function to select the character list (seems a silly thing to pull, but I also use it 4 times.)
-const pointToCharacterList = function(){
-  characterList = document.querySelector('.character-list');
-  return characterList;
-}
-
 //DONE - Function to create a character list item
 const createCharacterListItem = function(form){
   const characterListItem = document.createElement('li');
@@ -40,9 +34,9 @@ const createCharacterListItem = function(form){
 
 //DONE - function to delete list
 const deleteList = function(){
-  const characterList = pointToCharacterList();
+  const characterList = document.querySelector('.character-list');
   characterList.innerHTML = '';
-  //Why do you use innerHTML? Why can you not textContent?
+  //Why do you use innerHTML? Why should you not use textContent?
 
   document.querySelector('.delete-button').style.visibility = 'hidden';
 
@@ -51,7 +45,7 @@ const deleteList = function(){
 //DONE - Function to handle form submission (functions used: createCharacterListItem)
 const handleFormSubmission = function(event){
   event.preventDefault();
-  const characterList = pointToCharacterList();
+  const characterList = document.querySelector('.character-list');
   characterList.appendChild(createCharacterListItem(event.target));
 
   document.querySelector('.delete-button').style.visibility = 'visible';
