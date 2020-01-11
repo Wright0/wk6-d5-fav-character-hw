@@ -1,12 +1,12 @@
-document.eventListenner('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
 
 //Listen for form being submitted + call handleFormSubmission
 const form = document.querySelector('#fav-character-form');
 form.addEventListener('submit', handleFormSubmission);
 
-//Listen for delete button being clicked + call deleteList
-const deleteButton = document.querySelector('WHERETHEDELETEBUTTONIS');
-deleteButton.addEventListener('click', deleteList);
+// //Listen for delete button being clicked + call deleteList
+// const deleteButton = document.querySelector('WHERETHEDELETEBUTTONIS');
+// deleteButton.addEventListener('click', deleteList);
 
 });
 
@@ -22,31 +22,36 @@ const createCharacterListItem = function(form){
 
   const fandom = document.createElement('p');
   fandom.textContent = `Fandom: ${form.fandom.value}`;
-  fandomListItem.appendChild(fandom);
+  characterListItem.appendChild(fandom);
 
   const rating = document.createElement('p');
   rating.textContent = `Rating: ${form.rating.value}/5`;
-  fandomListItem.appendChild(rating);
+  characterListItem.appendChild(rating);
 
   return characterListItem;
 };
 
-//Function that checks length of items in list (This will be used to decide if a delete button should be added or not. If the node length is 0, add one. If it's 1, don't. This *should* ensure that only 1 delete button is added.)
-const listLengthCheck = function(){
-
-};
-
-//function that adds a delete button (calling list length check)
-const addDeleteButton = function(){
-
-};
+// //Function that checks length of items in list (This will be used to decide if a delete button should be added or not. If the node length is 0, add one. If it's 1, don't. This *should* ensure that only 1 delete button is added.)
+// const listLengthCheck = function(){
+//
+// };
+//
+// //function that adds a delete button (calling list length check)
+// const addDeleteButton = function(){
+//
+// };
 
 //Function to handle form submission (functions used: createCharacterListItem createDeleteButton)
 const handleFormSubmission = function(event){
-  
+  event.preventDefault();
+
+  const characterList = document.querySelector('.character-list');
+  characterList.appendChild(createCharacterListItem(event.target));
+
+  // event.target.reset();
 };
 
-//Function to handle deletion of list
-const deleteList = function(event){
+// //Function to handle deletion of list
+// const deleteList = function(event){
 
-};
+// };
