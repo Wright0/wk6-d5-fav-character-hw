@@ -97,5 +97,5 @@ const handleFormSubmission = function(event){
 
   document.querySelector('.delete-button').style.visibility = 'visible';
 
-  event.target.reset();
+  // event.target.reset();
 };
