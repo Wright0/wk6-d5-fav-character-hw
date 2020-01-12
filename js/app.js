@@ -9,6 +9,50 @@ document.addEventListener('DOMContentLoaded', () => {
   deleteButton.addEventListener('click', deleteList);
 });
 
+// Witcher easter egg
+const isGeraltOfRivia = function(event){
+  const name =  `${event.target.first_name.value} ${event.target.last_name.value}`.toLowerCase();
+  return name === "geralt of rivia";
+};
+
+const payWitcher = function(){
+  const walletValue = document.querySelector(".value");
+
+  let walletValueAsNumber = parseInt(walletValue.textContent);
+  walletValueAsNumber += 1
+
+  walletValue.innerHTML = walletValueAsNumber;
+};
+
+const createWallet = function(whereToAppend){
+  const wallet = document.createElement('div');
+  wallet.classList.add('geralts-wallet')
+
+  const walletText = document.createElement('p');
+  walletText.textContent = 'Wallet amount:';
+
+  const walletValue = document.createElement('p');
+  walletValue.textContent = '0';
+  walletValue.classList.add('value')
+
+  wallet.appendChild(walletText);
+  wallet.appendChild(walletValue);
+
+
+  return wallet;
+};
+
+const createPayWitcherButton = function(){
+  const payWitcherButton = document.createElement('button');
+  payWitcherButton.textContent = 'Toss a coin to your witcher';
+  payWitcherButton.classList.add('pay-witcher-button');
+
+  payWitcherButton.addEventListener('click', payWitcher);
+
+  return payWitcherButton;
+};
+//End of functions for witcher easter egg.
+
 //Function to create a character list item
 const createCharacterListItem = function(form){
   const characterListItem = document.createElement('li');
@@ -26,6 +70,11 @@ const createCharacterListItem = function(form){
   const rating = document.createElement('p');
   rating.textContent = `Rating: ${form.rating.value}/5`;
   characterListItem.appendChild(rating);
+
+  if (isGeraltOfRivia(event)){
+    characterListItem.appendChild(createWallet());
+    characterListItem.appendChild(createPayWitcherButton());
+  };
 
   return characterListItem;
 };
