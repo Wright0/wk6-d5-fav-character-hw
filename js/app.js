@@ -88,14 +88,38 @@ const deleteList = function(){
   document.querySelector('.delete-button').style.visibility = 'hidden';
 };
 
+//function to compare html nodes and see if a character is already on the list. Returns true or false.
+const isCharacterAlreadyOnList = function(existingNodes, newItemBeingAdded){
+  if (existingNodes.length === 0){
+    return;
+  };
+
+  const matchingNodes = []
+
+  existingNodes.forEach(node => {
+    if (node.isEqualNode(newItemBeingAdded)){
+      matchingNodes.push(node);
+    };
+  });
+
+  return matchingNodes.length >= 1
+};
+
 //Function to handle form submission
 const handleFormSubmission = function(event){
   event.preventDefault();
 
   const characterList = document.querySelector('.character-list');
-  characterList.appendChild(createCharacterListItem(event.target));
+  const newItem = createCharacterListItem(event.target)
 
-  document.querySelector('.delete-button').style.visibility = 'visible';
+  const currentNodeList = characterList.childNodes;
 
-  // event.target.reset();
+  if (isCharacterAlreadyOnList(currentNodeList, newItem)){
+    return alert("This character is already on your list");
+  } else {
+    characterList.appendChild(newItem);
+
+    document.querySelector('.delete-button').style.visibility = 'visible';
+  }
+    event.target.reset();
 };
