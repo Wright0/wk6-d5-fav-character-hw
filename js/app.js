@@ -83,12 +83,12 @@ const createCharacterListItem = function(form){
 const deleteList = function(){
   const characterList = document.querySelector('.character-list');
   characterList.innerHTML = '';
-  //Why do you use innerHTML? Why should you not use textContent?
+  //innerHTML vs textContent.
 
   document.querySelector('.delete-button').style.visibility = 'hidden';
 };
 
-//function to compare html nodes and see if a character is already on the list. Returns true or false.
+//function to compare html nodes and see if a character is already on the list. Returns true or false. Doesn't account for items being almost the same (i.e. the same character with a different rating or a character with a typo in their name. The items have to be exactly the same for this to trigger true.)
 const isCharacterAlreadyOnList = function(existingNodes, newItemBeingAdded){
   if (existingNodes.length === 0){
     return;
