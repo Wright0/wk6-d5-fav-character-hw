@@ -5,15 +5,20 @@ body {
   justify-content: center;
   background-color: #FDFFFC;
   margin: 20px;
-}
-
-p, h1 {
+  font-family: 'Muli', sans-serif;
   color: #235789;
 }
 
-h2, h3 {
-  color: #235789;
-  margin: 7px 0px;
+h1 {
+  color: #FDFFFC;
+}
+
+h2 {
+  margin: 15px 0px 0px 0px
+}
+
+h3 {
+  margin: 0px;
 }
 
 ul {
@@ -29,6 +34,7 @@ form {
   border-width: 4px;
   max-width: 350px;
   padding: 10px;
+  margin: 15px 0px 0px 0px;
 }
 
 .form-wrapper {
@@ -71,4 +77,11 @@ div.banner {
   margin: 0px;
   min-height: 20px;
   min-width: 100%
+}
+
+div.banner h1 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
